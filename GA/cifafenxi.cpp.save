@@ -357,6 +357,7 @@ int main()
     string code_output;
     fstream fpin;
     fstream fpout;
+    fstream ferror;
 
 
     wordTable *keyword = new wordTable[100];
@@ -364,20 +365,9 @@ int main()
     int ResultId = 0;
     int keywordId = 0;
     int row = 0;
-    string infileName = "code_in.txt";
-    string outfileName = "la_output.txt";
-    fpin.open(infileName.c_str(),ios::in | ios::out);
-    fpout.open(outfileName.c_str(),ios::in | ios::out);
-    if(!fpin.is_open())
-    {
-        cout << "string 1!"  << endl;
-        exit(0);
-    }
-    if(!fpout.is_open())
-    {
-        cout << "文件打开失败2！"  << endl;
-        exit(0);
-    }
+    fpin.open("code_in.txt",ios::in | ios::out);
+    fpout.open("la_output.txt",ios::in | ios::out);
+    ferror.open("error.txt", ios::out);
 
     int keywordcount = writeKeyword(keyword);
 
@@ -386,11 +376,9 @@ int main()
         getline(fpin,code);
         row++;
         fun(code,keyword,result,ResultId,keywordId,keywordcount,row);
-
     }
     for(int i = 1;i <= ResultId;i++)
     {
-        //cout << "debug:i:" << i <<endl;
         fpout << result[i].type;
         fpout << '\t';
         fpout << result[i].value;
@@ -399,4 +387,5 @@ int main()
     }
     fpin.close();
     fpout.close();
+    ferror.close();
 }

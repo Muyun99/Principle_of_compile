@@ -1,6 +1,6 @@
 program x;
-const a:=5
-j,sum,x
+const a:=5;
+var j,sum,x;
 	procedure sum(x);
 	var j;
 	begin

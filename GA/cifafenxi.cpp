@@ -390,7 +390,7 @@ int main()
     }
     for(int i = 1;i <= ResultId;i++)
     {
-        //cout << "debug:i:" << i <<endl;
+        cout << "debug:i:" << i <<endl;
         fpout << result[i].type;
         fpout << '\t';
         fpout << result[i].value;
